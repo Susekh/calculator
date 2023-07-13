@@ -6,3 +6,40 @@ body{
     width: 100vw;
     height: 100vh;
 }
+.other-rows{
+    width: 100%;
+}
+.number{
+    width: 20%;
+
+}
+.decimal{
+    width: 20%;
+}
+.operator{
+    border: 2px solid black;
+    width: 20%;
+}
+.first-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+}
+
+.screen{
+    border: 1px solid green;
+    width: 60%;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.previous{
+    font-size: small;
+}
+.current{
+    font-size: large;
+}
