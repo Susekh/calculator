@@ -1,94 +1,71 @@
-let operator = '';
-let previousValue = '';
-let currentValue = '';
+const equalsTo = document.querySelector(".equalsTo");
+const operatorBtn = document.querySelectorAll('.operators-btn');
+const displayResult = document.querySelector('.display');
+let displayVar = '';
+let calcVar = 0;
+let previousVal = '';
 
-
-document.addEventListener("DOMContentLoaded", function(){
-    //stores all components on HTMl in our JS
-    let clear = document.querySelector(".clear");
-    let equal = document.querySelector(".equal");
-    let decimal = document.querySelector(".decimal");
-
-    let numbers = document.querySelectorAll(".number");
-    let operators = document.querySelectorAll(".operator");
-
-    let previousScreen = document.querySelector(".previous");
-    let currentScreen = document.querySelector(".current");
-
-    numbers.forEach((number) => number.addEventListener("click", function(e){
-        handleNumber(e.target.textContent)
-        currentScreen.textContent = currentValue;
-    }))
-
-
-    operators.forEach((op) => op.addEventListener("click",function(e){
-        handleOperator(e.target.textContent)
-        previousScreen.textContent = previousValue + " " + operator;
-        currentScreen.textContent = currentValue; 
-    }))
-
-    clear.addEventListener("click", function(){
-        previousValue = '';
-        currentValue = '';
-        operator = '';
-        previousScreen.textContent = currentValue;
-        currentScreen.textContent = currentValue;
+// function for operands
+function clickOperand(value){
+    equalsTo.removeAttribute('disabled')
+    operatorBtn.forEach((item)=>{
+        item.removeAttribute('disabled')
     })
+    displayVar+= value;
+    renderDisplay();
+}
 
-    equal.addEventListener("click", function(){
-        if(currentValue != '' && previousValue != ''){
-            calculate()
-            previousScreen.textContent = '';
-            if(previousValue.length <= 5){
-                currentScreen.textContent = previousValue;
-            } else{
-                currentScreen.textContent = previousValue.slice(0,5) + "...";
-            }
-        }
+
+
+
+// function for operators
+
+
+function clickOperator(value){
+    operatorBtn.forEach((item)=>{
+        item.setAttribute('disabled', '')
     })
+    equalsTo.setAttribute('disabled', "");
+    displayVar += value;
+    renderDisplay();
+}
 
-    decimal.addEventListener("click", function(){
-        addDecimal();
+// function to change string to int
+
+function parse(str) {
+    return Function(`'use strict'; return (${str})`)()
+  }
+
+
+
+// function responsible for equal CE button's functioning
+
+function CEbtn(){
+    displayVar = displayVar.slice(0, -1); 
+    renderDisplay();
+}
+
+
+// function responsible for equal button's functioning
+
+function clickEqual(){
+    calcVar = parse(displayVar)
+    operatorBtn.forEach((item)=>{
+        item.removeAttribute('disabled')
     })
-})
-
-function handleNumber(num){
-    if(currentValue.length <= 5){
-        currentValue += num;
-    }
+    displayVar = `${calcVar}`;
+    
+    renderDisplay();
+    // to update the value of previous value
+    previousVal = displayVar; 
 }
 
-function handleOperator(op){
-    operator = op;
-    previousValue = currentValue;
-    currentValue = '';
+
+// Renders the ontents of display
+
+function renderDisplay(){
+    displayResult.innerHTML = `
+    <p>${previousVal.replace('*','x')}</p>
+    <h1>${displayVar.replace('*','x')}</h1>`;
 }
 
-function calculate(){
-    previousValue = Number(previousValue);
-    currentValue = Number(currentValue);
-
-    if(operator === "+"){
-        previousValue += currentValue;
-    }
-    else if (operator === "-"){
-        previousValue -= currentValue;
-    }
-    else {
-        previousValue /= currentValue;
-    }
-
-    previousValue = roundNumber(previousValue);
-    previousValue = previousValue.toString();
-    currentValue = previousValue.toString();
-}
-
-function roundNumber(num){
-    return Math.round(num * 1000) / 1000;
-}
-
-function addDecimal(){
-    if(!currentValue.includes(".")){
-        currentValue += '.';
-    }
-}

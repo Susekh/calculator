@@ -5,41 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calculator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="./script.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <h1>Calculator</h1>
     <div class="calculator">
-        <div class="first-row">
-            <div class="screen">
-                <div class="previous"></div>
-                <div class="current"></div>
+        <div class="calc-body">
+            <div class="display">
             </div>
-            <button class="clear">C</button>
-        </div>
-        <div class="other-rows">
-            <button class="number" >7</button>
-            <button class="number" >8</button>
-            <button class="number" >9</button>
-            <button class="operator" >/</button>
-        </div>
-        <div class="other-rows">
-            <button class="number" >4</button>
-            <button class="number" >5</button>
-            <button class="number" >6</button>
-            <button class="operator" >X</button>
-        </div>
-        <div class="other-rows">
-            <button class="number" >1</button>
-            <button class="number" >2</button>
-            <button class="number" >3</button>
-            <button class="operator" >-</button>
-        </div>
-        <div class="other-rows">
-            <button class="decimal" >.</button>
-            <button class="number" >0</button>
-            <button class="equal" >=</button>
-            <button class="operator" >+</button>
+            <div class="keypad">
+                <button class="operators-btn" value="("  onclick="clickOperator(this.value)">(</button>
+                <button class="operators-btn" value=")"  onclick="clickOperator(this.value)">)</button>
+                <button class="operators-btn" value="%" disabled onclick="clickOperator(this.value)">%</button>
+                <button class="operators-btn" disabled onclick="CEbtn()">CE</button>
+                <button class="num-pads" value='7' onclick="clickOperand(this.value)">7</button>
+                <button class="num-pads" value='8' onclick="clickOperand(this.value)">8</button>
+                <button class="num-pads" value='9' onclick="clickOperand(this.value)">9</button>
+                <button class="operators-btn" value="/" disabled onclick="clickOperator(this.value)">/</button>
+                <button class="num-pads" value='4' onclick="clickOperand(this.value)">4</button>
+                <button class="num-pads" value='5' onclick="clickOperand(this.value)">5</button>
+                <button class="num-pads" value='6' onclick="clickOperand(this.value)">6</button>
+                <button class="operators-btn" value="*" disabled onclick="clickOperator(this.value)">X</button>
+                <button class="num-pads" value='1' onclick="clickOperand(this.value)">1</button>
+                <button class="num-pads" value='2' onclick="clickOperand(this.value)">2</button>
+                <button class="num-pads" value='3' onclick="clickOperand(this.value)">3</button>
+                <button class="operators-btn" value="-" onclick="clickOperator(this.value)">-</button>
+                <button class="num-pads" value='0' onclick="clickOperand(this.value)">0</button>
+                <button class="num-pads" value='.' onclick="clickOperand(this.value)">.</button>
+                <button class="operators-btn" value="+" onclick="clickOperator(this.value)">+</button>
+                <button class="equalsTo" disabled onclick="clickEqual()">=</button>
+            </div>
         </div>
     </div>
 </body>

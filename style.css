@@ -1,45 +1,108 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+html, body{
+    height: 100;
+    width: 100;
+}
+
+
+/* placing the calculator in an ideal place */
+.calculator{
+    height: 100;
+    width: 100;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* styling the body of calculator */
+
+.calc-body{
+    margin-top: 5rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-}
-.other-rows{
-    width: 100%;
-}
-.number{
-    width: 20%;
-
-}
-.decimal{
-    width: 20%;
-}
-.operator{
-    border: 2px solid black;
-    width: 20%;
-}
-.first-row{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 9px;
+    width: 30rem;
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow: 
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
-.screen{
-    border: 1px solid green;
-    width: 60%;
-    height: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
+
+/* styling the display part of calculator */
+.display{
+    width: 25rem;
+    height: 8rem;
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    border-radius: 20px;
+    text-align: right;
 }
 
-.previous{
-    font-size: small;
+
+/* setting colour for the previous value in calculator display */
+
+.display > p{
+    color: #f97316;
 }
-.current{
+
+
+
+/* styling the keypads */
+.keypad{
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: repeat(4, 1fr);
+    width: 25rem;
+}
+
+
+.num-pads, .operators-btn, .equalsTo{
+    padding: 1rem;
+    border-radius: 20px;
     font-size: large;
+    border-style: none;
+    cursor: pointer;
+    box-shadow: 
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072);
+    transition: all .4s ease;
+}
+
+
+.operators-btn:hover{
+    background-color: #fdba74;
+}
+.num-pads:hover{
+    background-color: #fed7aa;
+}
+
+
+
+/* setting up the colour for equals to button */
+
+
+.equalsTo{
+    background-color: #f97316;
+    color: white;
+    
 }
